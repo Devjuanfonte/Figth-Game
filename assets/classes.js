@@ -11,10 +11,10 @@ class Char {
 class Mage extends Char {
     constructor(name) {
         super(name);
-        this.life = 8;
+        this.life = 10;
         this.maxLife = this.life;
-        this.attack = 12; 
-        this.def = 6;
+        this.attack = 10; 
+        this.def = 10;
     }
 }
 
@@ -33,8 +33,8 @@ class Wolf extends Char {
         super('Wolf');
         this.life = 10;
         this.maxLife = this.life;
-        this.attack = 6; 
-        this.def = 7;
+        this.attack = 10; 
+        this.def = 10;
     }
 }
 
@@ -72,22 +72,40 @@ class Stage extends Char {
         // player: 
         let playerPCT = (this.player.life / this.player.maxLife) * 100 ;  
         this.playerEl.querySelector('.lifeBar').style.width = `${playerPCT}%`;
-        this.playerEl.querySelector('#character').innerHTML = `${this.player.name} - ${playerPCT}HP`;
+        this.playerEl.querySelector('#character').innerHTML = `${this.player.name} - ${playerPCT.toFixed(2)}HP`;
 
 
         // enemy: 
         
         let enemyPCT = (this.enemy.life / this.enemy.maxLife) * 100;  
         this.enemyEl.querySelector('.lifeBar').style.width = `${enemyPCT}%`;
-        this.enemyEl.querySelector('#boss').innerHTML = `${this.enemy.name} - ${enemyPCT}HP`;
+        this.enemyEl.querySelector('#boss').innerHTML = `${this.enemy.name} - ${enemyPCT.toFixed(2)}HP`;
     }
 
 
-    doAttack(attacking, attacked){
-        console.log(`O ${attacking.name} atacou o ${attacked.name}`)
-
-
+    doAttack(attacking, attacked) {
+        if (attacking.life <= 0 || attacked.life <= 0) {
+            alert('O personagem já está morto')
+            return;
+        }
+    
+        let randomAttack = Math.random() * 2;
+        let randomDefense = Math.random() * 2;
+    
+        let actualAttack = attacking.attack * randomAttack;
+        let actualDefense = attacked.def * randomDefense;
+    
+        console.log('O ataque causou ' + (actualAttack - actualDefense) + ' de dano!');
+    
+        if (actualAttack > actualDefense) {
+            let damage = Math.max(1, Math.floor(actualAttack - actualDefense)); // Garante que o dano mínimo seja 1
+            attacked.life -= damage;
+        } else {
+            console.log('vasco da gama');
+        }
+    
         this.updateGame();
     }
+    
     
 }
