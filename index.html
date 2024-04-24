@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/style.css">
+    <title>Project Fighter</title>
+</head>
+<body>
+    <h1>Game Project</h1>
+
+    <main>
+        <div class="fightArea" id="personArea">
+            <div id="character" class="charName">Personagem</div>
+            <div class="lifeArea">
+                <div class="lifeBar" style="width: 10%;"></div>
+            </div>             
+                <img class="personImg" src="./assets/wolf.png" alt="Personagem">            
+            <button class="button personAtackButton attackButton">Atacar</button>
+        </div>
+    
+        <div class="fightArea" id="bossArea">
+            <div id="boss" class="charName">Chefe</div>
+            <div class="lifeArea">
+                <div class="lifeBar" style="width: 10%;"></div>
+            </div>                         
+                <img class="bossImg" src="./assets/wolf.png" alt="Chefe">            
+            <button class="button enemyAtackButton attackButton">Atacar</button>
+        </div>
+    </main>
+    
+
+    <section class="logSection">
+        <div class="logArea">
+            <ul class="logList"> 
+                <li class="logItem">...</li>
+                <li class="logItem">...</li>
+                <li class="logItem">...</li>
+            </ul>
+        </div>
+    </section>
+
+<script src="./assets/classes.js"></script>
+<script src="./assets/script.js"></script>
+</body>
+</html>
